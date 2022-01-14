@@ -2,7 +2,6 @@
 
 module.exports = {
   name: 'ember-django-adapter',
-
   included: function(app) {
     this._super.included.apply(this, arguments);
 
@@ -10,7 +9,9 @@ module.exports = {
     if (typeof app.import !== 'function' && app.app) {
       app = app.app;
     }
-
     app.import('vendor/ember-django-adapter/register-version.js');
+  },
+  isDevelopingAddon: function () {
+    return true
   }
 };
