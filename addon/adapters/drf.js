@@ -63,7 +63,7 @@ export default RESTAdapter.extend({
   */
   buildURL: function(modelName, id, snapshot, requestType, query) {
     var url = this._super(modelName, id, snapshot, requestType, query);
-    if (this.get('addTrailingSlashes')) {
+    if (this.addTrailingSlashes) {
       if (url.charAt(url.length - 1) !== '/') {
         url += '/';
       }
@@ -150,7 +150,7 @@ export default RESTAdapter.extend({
       if (payload.hasOwnProperty(key)) {
         if (isArray(payload[key])) {
           payload[key].forEach(error => {
-            if (key === this.get('nonFieldErrorsKey')) {
+            if (key === this.nonFieldErrorsKey) {
               out.push({
                 source: { pointer: '/data' },
                 detail: error,

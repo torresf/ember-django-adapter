@@ -1,6 +1,5 @@
 import { run } from '@ember/runloop';
 import { merge } from '@ember/polyfills';
-import $ from 'jquery';
 import {
   module,
   test
@@ -56,13 +55,13 @@ module('Acceptance: CRUD Success', function(hooks) {
 
       // Create record
       this.post('/test-api/posts/', function(request) {
-        var data = $.parseJSON(request.requestBody);
+        var data = JSON.parse(request.requestBody);
         return [201, {'Content-Type': 'application/json'}, JSON.stringify(data)];
       });
 
       // Update record
       this.put('/test-api/posts/1/', function(request) {
-        var data = merge(posts[0], $.parseJSON(request.requestBody));
+        var data = merge(posts[0], JSON.parse(request.requestBody));
         return [200, {'Content-Type': 'application/json'}, JSON.stringify(data)];
       });
 

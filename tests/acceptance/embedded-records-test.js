@@ -1,5 +1,4 @@
 import { run } from '@ember/runloop';
-import $ from 'jquery';
 import {
   module,
   test
@@ -74,7 +73,7 @@ module('Acceptance: Embedded Records', function(hooks) {
       });
 
       this.post('/test-api/embedded-post-comments/', function(request) {
-        let data = $.parseJSON(request.requestBody);
+        let data = JSON.parse(request.requestBody);
         data['id'] = 8;
         data['post'] = posts[0];
         return [201, {'Content-Type': 'application/json'}, JSON.stringify(data)];
