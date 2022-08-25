@@ -9,7 +9,7 @@ module.exports = {
     if (typeof app.import !== 'function' && app.app) {
       app = app.app;
     }
-    app.import('vendor/ember-django-adapter/register-version.js');
+    // app.import('vendor/ember-django-adapter/register-version.js');
   },
   isDevelopingAddon: function () {
     return true
